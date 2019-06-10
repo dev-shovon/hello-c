@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "get_message.c"
-#include "print_message.c"
+#include "get_message.h"
+#include "print_message.h"
 
 
 int main(void) {
