@@ -1,9 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char *getMessage(void);
+
 int main(void) {
-    char *msg = "Hello world";
-    printf("%s\n", msg);
+    printf("%s\n", getMessage());
     
     return EXIT_SUCCESS;
+}
+
+
+char *getMessage(void) {
+    char *msg = "Hello world";
+    
+    return msg;
 }
