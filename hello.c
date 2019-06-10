@@ -2,7 +2,8 @@
 #include <stdlib.h>
 
 int main(void) {
-    printf("%s\n", "Hello World");
+    char *msg = "Hello world";
+    printf("%s\n", msg);
     
     return EXIT_SUCCESS;
 }
