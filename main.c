@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "getMessage.c"
+#include "get_message.c"
 
 int main(void) {
     printf("%s\n", getMessage());
