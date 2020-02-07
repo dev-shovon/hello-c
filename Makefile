@@ -1,7 +1,16 @@
 CC=gcc
-OUTPUT=a.out
+OUTPUT=message-printer
 
 default: run
 
-run: main.c print_message.c get_message.c
-	$(CC) -o $(OUTPUT) main.c print_message.c get_message.c
+print_message.o: print_message.h print_message.c
+	$(CC) -c -o print_message.o print_message.c
+
+get_message.o: get_message.h get_message.c
+	$(CC) -c -o get_message.o get_message.c
+
+run: main.c print_message.o get_message.o
+	$(CC) -o $(OUTPUT) main.c print_message.o get_message.o
+
+clean:
+	rm $(OUTPUT) get_message.o print_message.o && echo "cleaned"

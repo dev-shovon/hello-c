@@ -1,0 +1,44 @@
+stages:
+    - compile:object
+    - compile:app
+    - run
+
+build:getMessage:
+    stage: compile:object
+    script: 
+        - gcc -c -o get_message.o get_message.c
+    artifacts:
+        paths:
+            - get_message.o
+
+build:printMessage:
+    stage: compile:object
+    script:
+        - gcc -c -o print_message.o print_message.c
+    artifacts:
+        paths:
+            - print_message.o
+
+compile:app:
+    stage: compile:app
+    script:
+        - gcc -o app main.c get_message.o print_message.o
+    artifacts:
+        paths:
+            - app
+
+run:
+    stage: run
+    script:
+        - echo '#!/usr/bin/expect' > runner.sh
+        - echo 'spawn ./app' >> runner.sh
+        - echo 'expect "What is your name?"' >> runner.sh
+        - echo 'send "Shahriar Shovon\n"' >> runner.sh
+        - echo 'interact' >> runner.sh
+        - chmod +x runner.sh
+        - ./runner.sh
+    artifacts:
+        paths:
+            - app
+            - runner.sh
+
